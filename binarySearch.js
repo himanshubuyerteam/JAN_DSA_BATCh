@@ -133,7 +133,7 @@ function searchInRSA(arr,key)
 function kokoEating(arr,h)
 {
     let min=1;
-    let max=1;
+    let max=arr[0];
     let ans=-1;
     for(let i=0;i<arr.length;i++)
         max=Math.max(max,arr[i]);
