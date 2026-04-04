@@ -154,3 +154,56 @@ function nodeToRoot(root,key)
     else
         return false;
 }
+
+
+function find_in_BT(root,key)
+{
+    if(root==null)
+        return false;
+    if(root.val==key)
+        return true;
+    let left_ans=find_in_BT(root.left,key);
+    let right_ans=find_in_BT(root.right,key);
+    return right_ans || left_ans;
+}
+//Node to Root
+function path_in_BT(root,key,path)
+{
+    if(root==null)
+        return false;
+    if(root.val==key)
+    {
+        path.add(root);
+        return true;
+    }
+    let left_ans=find_in_BT(root.left,key);
+    let right_ans=find_in_BT(root.right,key);
+    let mans= right_ans || left_ans;
+    if(mans==true)
+    {
+        path.add(root);
+        return mans;
+    }
+    else
+        return false;
+}
+
+
+function LCA(root,a,b)
+{
+    let path1=path_in_BT(root,a,[]);
+    let path2=path_in_BT(root,b,[]);
+
+    //Op1 Reverse path1 and path2
+    //First Same Element is the Ans
+
+    let i=0;
+    // let j=0;
+    while(i<Math.min(path1.length,path2.length))
+    {
+        if(path1[i]!=path2[i])
+            i++;
+        else
+            return path1[i];
+    }
+}
